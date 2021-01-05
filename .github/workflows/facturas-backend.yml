@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     container: node:12.18.4
 
+    services:
+      mongo:
+        image: mongo:4.2.2
+
     steps:
       - name: Descargar contenido del repositorio
         uses: actions/checkout@v2
