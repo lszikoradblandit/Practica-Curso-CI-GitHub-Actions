@@ -36,3 +36,8 @@ jobs:
         run: npm test -- --coverage
         env:
           MONGO_URI: "mongodb://mongo/finanzas"
+      - name: Subir coverage como un artefacto
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: ./coverage
