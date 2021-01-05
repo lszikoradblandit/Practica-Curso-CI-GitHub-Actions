@@ -1,0 +1,17 @@
+name: Facturas CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container: node:12.18.4
+
+    steps:
+      - uses: actions/checkout@v2
