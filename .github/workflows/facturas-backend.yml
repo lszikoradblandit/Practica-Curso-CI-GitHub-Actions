@@ -56,3 +56,18 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "practica-dblandit-lszikora"
           heroku_email: "lszikora@dblandit.com"
+
+  publish-backend-docker:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v2
+      - name: Construir y publicar la imagen Docker
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ secrets.DOCKER_USER }}/facturas-backend
+          tag_with_ref: true
