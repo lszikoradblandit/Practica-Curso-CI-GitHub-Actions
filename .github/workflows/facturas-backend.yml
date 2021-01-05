@@ -41,3 +41,18 @@ jobs:
         with:
           name: code-coverage-report
           path: ./coverage
+
+  publish-backend:
+
+    runs-on: ubuntu-latest
+    needs: build-backend
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v2
+      - name: Deploy en Heroku
+        uses: akhileshns/heroku-deploy@v3.8.8
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "practica-dblandit-lszikora"
+          heroku_email: "lszikora@dblandit.com"
